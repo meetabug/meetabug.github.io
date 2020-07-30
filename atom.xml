@@ -2,13 +2,160 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meetabug.github.io</id>
     <title>Meetabug</title>
-    <updated>2020-07-28T12:50:28.744Z</updated>
+    <updated>2020-07-30T13:49:13.594Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meetabug.github.io"/>
     <link rel="self" href="https://meetabug.github.io/atom.xml"/>
     <logo>https://meetabug.github.io/images/avatar.png</logo>
     <icon>https://meetabug.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Meetabug</rights>
+    <entry>
+        <title type="html"><![CDATA[Composer常用命令]]></title>
+        <id>https://meetabug.github.io/post/composer-chang-yong-ming-ling/</id>
+        <link href="https://meetabug.github.io/post/composer-chang-yong-ming-ling/">
+        </link>
+        <updated>2020-07-30T13:35:59.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>搜索包</li>
+</ul>
+<pre><code>composer search
+</code></pre>
+<ul>
+<li>包的安装</li>
+</ul>
+<pre><code>composer require
+composer install
+</code></pre>
+<p>安装后会产生两个文件和一个文件夹，如下：</p>
+<p>composer.json 是包的依赖文件；</p>
+<p>composer.lock 是包的版本锁定文件；</p>
+<p>vendor 是包的所在目录；</p>
+<p>对于 require 和 install 是不相同的，require 会把包的信息添加到 composer.json 文件中并进行 install 。而 install 是直接从 composer.json 或 composer.lock 文件中提取依赖信息，然后进行安装。</p>
+<ul>
+<li>更新包</li>
+</ul>
+<pre><code>composer update
+</code></pre>
+<ul>
+<li>删除包</li>
+</ul>
+<pre><code>composer remove
+</code></pre>
+<ul>
+<li>依赖打包</li>
+</ul>
+<blockquote>
+<p>如果项目中安装了不止一个包，可能安装了很多个项目依赖的包，需要对项目中的包依赖进行一个打包处理成为一个压缩文件。</p>
+</blockquote>
+<pre><code>composer archive
+</code></pre>
+<ul>
+<li>生成类库映射文件</li>
+</ul>
+<pre><code>composer dump-autoload
+</code></pre>
+<ul>
+<li>创建项目</li>
+</ul>
+<pre><code>composer create-project
+</code></pre>
+<ul>
+<li>更新composer</li>
+</ul>
+<pre><code>composer self-update
+</code></pre>
+<ul>
+<li>初始化</li>
+</ul>
+<blockquote>
+<p>以交互方式填写composer.json文件信息</p>
+</blockquote>
+<pre><code>composer init 
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Vagrant 常用命令]]></title>
+        <id>https://meetabug.github.io/post/vagrant-chang-yong-ming-ling/</id>
+        <link href="https://meetabug.github.io/post/vagrant-chang-yong-ming-ling/">
+        </link>
+        <updated>2020-07-30T13:15:49.000Z</updated>
+        <content type="html"><![CDATA[<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vagrant init</td>
+<td>初始化</td>
+</tr>
+<tr>
+<td>vagrant up</td>
+<td>启动虚拟机</td>
+</tr>
+<tr>
+<td>vagrant halt</td>
+<td>关闭虚拟机</td>
+</tr>
+<tr>
+<td>vagrant reload {--provision}</td>
+<td>重启虚拟机</td>
+</tr>
+<tr>
+<td>vagrant ssh</td>
+<td>SSH 至虚拟机</td>
+</tr>
+<tr>
+<td>vagrant status</td>
+<td>查看虚拟机运行状态</td>
+</tr>
+<tr>
+<td>vagrant destroy</td>
+<td>销毁当前虚拟机</td>
+</tr>
+<tr>
+<td>vagrant suspend</td>
+<td>挂起虚拟机</td>
+</tr>
+<tr>
+<td>vagrant resume</td>
+<td>恢复被挂起的虚拟机</td>
+</tr>
+<tr>
+<td>vagrant box list</td>
+<td>列出所有box列表</td>
+</tr>
+<tr>
+<td>vagrant box remove {base name}</td>
+<td>删除box</td>
+</tr>
+<tr>
+<td>vagrant package</td>
+<td>把当前运行的虚拟机环境进行打包，可用于分发开发环境</td>
+</tr>
+<tr>
+<td>vagrant plugin</td>
+<td>安装/卸载插件</td>
+</tr>
+<tr>
+<td>vagrant provision</td>
+<td>设置基本的环境，进一步设置可以使用Chef/Puppet进行搭建</td>
+</tr>
+<tr>
+<td>vagrant ssh-config</td>
+<td>输出SSH 连接的一些信息</td>
+</tr>
+<tr>
+<td>vagrant vsersion</td>
+<td>获取Vagrant的版本</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://meetabug.github.io/post/hello-gridea/</id>
