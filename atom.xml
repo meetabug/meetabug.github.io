@@ -2,13 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meetabug.github.io</id>
     <title>Meetabug</title>
-    <updated>2020-08-01T14:55:59.047Z</updated>
+    <updated>2020-08-01T15:36:30.351Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meetabug.github.io"/>
     <link rel="self" href="https://meetabug.github.io/atom.xml"/>
     <logo>https://meetabug.github.io/images/avatar.png</logo>
     <icon>https://meetabug.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Meetabug</rights>
+    <entry>
+        <title type="html"><![CDATA[SQL Cheat Sheet - SQL 速查手册]]></title>
+        <id>https://meetabug.github.io/post/sql-cheat-sheet-sql-su-cha-shou-ce/</id>
+        <link href="https://meetabug.github.io/post/sql-cheat-sheet-sql-su-cha-shou-ce/">
+        </link>
+        <updated>2020-08-01T15:34:43.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://meetabug.github.io/post-images/1596296166698.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[HTTP 状态码]]></title>
         <id>https://meetabug.github.io/post/http-zhuang-tai-ma/</id>
