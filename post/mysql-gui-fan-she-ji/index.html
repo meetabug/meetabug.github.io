@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>SQL Cheat Sheet - SQL 速查手册 | Meetabug</title>
+<title>Mysql 规范设计 | Meetabug</title>
 
 <link rel="shortcut icon" href="https://meetabug.github.io/favicon.ico?v=1596351912779">
 
@@ -83,7 +83,7 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    SQL Cheat Sheet - SQL 速查手册
+                    Mysql 规范设计
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
@@ -96,7 +96,183 @@
                     
                 </div>
                 <div class="post-content">
-                    <figure data-type="image" tabindex="1"><img src="https://meetabug.github.io/post-images/1596296166698.png" alt="" loading="lazy"></figure>
+                    <h2 id="配置规范">配置规范</h2>
+<ul>
+<li>
+<p>MySQL数据库默认使用InnoDB存储引擎。</p>
+</li>
+<li>
+<p>保证字符集设置统一，MySQL数据库相关系统、数据库、表的字符集使都用UTF8，应用程序连接、展示等可以设置字符集的地方也都统一设置为UTF8字符集。</p>
+</li>
+</ul>
+<blockquote>
+<p>注：UTF8格式是存储不了表情类数据，需要使用UTF8MB4，可在MySQL字符集里面设置。在8.0中已经默认为UTF8MB4，可以根据公司的业务情况进行统一或者定制化设置。</p>
+</blockquote>
+<ul>
+<li>
+<p>MySQL数据库的事务隔离级别默认为RR（Repeatable-Read），建议初始化时统一设置为RC（Read-Committed）。</p>
+</li>
+<li>
+<p>数据库中的表要合理规划，控制单表数据量，对于MySQL数据库来说，建议单表记录数控制在2000W以内。</p>
+</li>
+<li>
+<p>MySQL实例下，数据库、表数量尽可能少；数据库一般不超过50个，每个数据库下，数据表数量一般不超过500个（包括分区表）。</p>
+</li>
+</ul>
+<h2 id="建表规范">建表规范</h2>
+<ul>
+<li>
+<p>InnoDB禁止使用外键约束，可以通过程序层面保证。</p>
+</li>
+<li>
+<p>存储精确浮点数必须使用DECIMAL替代FLOAT和DOUBLE。</p>
+</li>
+<li>
+<p>整型定义中无需定义显示宽度，比如：使用INT，而不是INT(4)。</p>
+</li>
+<li>
+<p>不建议使用ENUM类型，可使用TINYINT来代替。</p>
+</li>
+<li>
+<p>尽可能不使用TEXT、BLOB类型，如果必须使用，建议将过大字段或是不常用的描述型较大字段拆分到其他表中；另外，禁止用数据库存储图片或文件。</p>
+</li>
+<li>
+<p>存储年时使用YEAR(4)，不使用YEAR(2)。</p>
+</li>
+<li>
+<p>建议字段定义为NOT NULL。</p>
+</li>
+</ul>
+<h2 id="命名规范">命名规范</h2>
+<ul>
+<li>
+<p>库、表、字段全部采用小写。</p>
+</li>
+<li>
+<p>库名、表名、字段名、索引名称均使用小写字母，并以“_”分割。</p>
+</li>
+<li>
+<p>库名、表名、字段名建议不超过12个字符。（库名、表名、字段名支持最多64个字符，但为了统一规范、易于辨识以及减少传输量，统一不超过12字符）</p>
+</li>
+<li>
+<p>库名、表名、字段名见名知意，不需要添加注释。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>对象中文名称</th>
+<th>对象英文全称</th>
+<th>MySQL对象简写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>视图</td>
+<td>view</td>
+<td>view_</td>
+</tr>
+<tr>
+<td>函数</td>
+<td>function</td>
+<td>func_</td>
+</tr>
+<tr>
+<td>存储过程</td>
+<td>procedure</td>
+<td>proc_</td>
+</tr>
+<tr>
+<td>触发器</td>
+<td>trigger</td>
+<td>trig_</td>
+</tr>
+<tr>
+<td>普通索引</td>
+<td>index</td>
+<td>idx_</td>
+</tr>
+<tr>
+<td>唯一索引</td>
+<td>unique index</td>
+<td>uniq_</td>
+</tr>
+<tr>
+<td>主键索引</td>
+<td>primary key</td>
+<td>pk_</td>
+</tr>
+</tbody>
+</table>
+<h2 id="索引规范">索引规范</h2>
+<ul>
+<li>
+<p>索引建议命名规则：idx_col1_col2[_colN]、uniq_col1_col2[_colN]（如果字段过长建议采用缩写）。</p>
+</li>
+<li>
+<p>索引中的字段数建议不超过5个。</p>
+</li>
+<li>
+<p>单张表的索引个数控制在5个以内。</p>
+</li>
+<li>
+<p>InnoDB表一般都建议有主键列，尤其在高可用集群方案中是作为必须项的。</p>
+</li>
+<li>
+<p>建立复合索引时，优先将选择性高的字段放在前面。</p>
+</li>
+<li>
+<p>UPDATE、DELETE语句需要根据WHERE条件添加索引。</p>
+</li>
+<li>
+<p>不建议使用%前缀模糊查询，例如LIKE “%weibo”，无法用到索引，会导致全表扫描。</p>
+</li>
+<li>
+<p>合理利用组合索引，例如：SELECT email,uid FROM user_email WHERE uid=xx，如果uid不是主键，可以创建组合索引idx_uid_email(uid,email)来提高查询效率。</p>
+</li>
+<li>
+<p>避免在索引字段上使用函数，否则会导致查询时索引失效。</p>
+</li>
+</ul>
+<h2 id="应用规范">应用规范</h2>
+<ul>
+<li>
+<p>避免使用存储过程、触发器、自定义函数等，容易将业务逻辑和DB耦合在一起，后期做分布式方案时会成为瓶颈。</p>
+</li>
+<li>
+<p>考虑使用UNION ALL，减少使用UNION，因为UNION ALL不去重，而少了排序操作，速度相对比UNION要快，如果没有去重的需求，优先使用UNION ALL。</p>
+</li>
+<li>
+<p>考虑使用limit N，少用limit M，N，特别是大表或M比较大的时候。</p>
+</li>
+<li>
+<p>减少或避免排序，如：group by语句中如果不需要排序，可以增加order by null。</p>
+</li>
+<li>
+<p>统计表中记录数时使用COUNT(<em>)，而不是COUNT(primary_key)和COUNT(1)；InnoDB表避免使用COUNT(</em>)操作，计数统计实时要求较强可以使用Memcache或者Redis，非实时统计可以使用单独统计表，定时更新。</p>
+</li>
+<li>
+<p>做字段变更操作（modify column/change column）的时候必须加上原有的注释属性，否则修改后，注释会丢失。</p>
+</li>
+<li>
+<p>使用prepared statement可以提高性能并且避免SQL注入。</p>
+</li>
+<li>
+<p>SQL语句中IN包含的值不应过多。</p>
+</li>
+<li>
+<p>UPDATE、DELETE语句一定要有明确的WHERE条件。</p>
+</li>
+<li>
+<p>WHERE条件中的字段值需要符合该字段的数据类型，避免MySQL进行隐式类型转化。</p>
+</li>
+<li>
+<p>SELECT、INSERT语句必须显式的指明字段名称，禁止使用SELECT * 或是INSERT INTO table_name values()。</p>
+</li>
+<li>
+<p>INSERT语句使用batch提交（INSERT INTO table_name VALUES(),(),()……），values的个数不应过多</p>
+</li>
+</ul>
 
                 </div>
             </article>
@@ -105,8 +281,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://meetabug.github.io/post/http-zhuang-tai-ma/" class="post-title gt-a-link">
-                    HTTP 状态码
+                <a href="https://meetabug.github.io/post/sql-cheat-sheet-sql-su-cha-shou-ce/" class="post-title gt-a-link">
+                    SQL Cheat Sheet - SQL 速查手册
                 </a>
             </div>
         
