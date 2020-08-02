@@ -2,13 +2,72 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meetabug.github.io</id>
     <title>Meetabug</title>
-    <updated>2020-08-02T13:43:05.967Z</updated>
+    <updated>2020-08-02T13:56:23.217Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meetabug.github.io"/>
     <link rel="self" href="https://meetabug.github.io/atom.xml"/>
     <logo>https://meetabug.github.io/images/avatar.png</logo>
     <icon>https://meetabug.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Meetabug</rights>
+    <entry>
+        <title type="html"><![CDATA[Docker 常用命令]]></title>
+        <id>https://meetabug.github.io/post/docker-chang-yong-ming-ling/</id>
+        <link href="https://meetabug.github.io/post/docker-chang-yong-ming-ling/">
+        </link>
+        <updated>2020-08-02T13:44:52.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="容器生命周期管理">容器生命周期管理</h2>
+<ul>
+<li>run</li>
+<li>start/stop/restart</li>
+<li>kill</li>
+<li>rm</li>
+<li>pause/unpause</li>
+<li>create</li>
+<li>exec</li>
+</ul>
+<h2 id="容器操作">容器操作</h2>
+<ul>
+<li>ps</li>
+<li>inspect</li>
+<li>top</li>
+<li>attach</li>
+<li>events</li>
+<li>logs</li>
+<li>wait</li>
+<li>export</li>
+<li>port</li>
+</ul>
+<h2 id="容器rootfs命令">容器rootfs命令</h2>
+<ul>
+<li>commit 从容器创建一个新的镜像</li>
+<li>cp 用于容器与主机之间的数据拷贝</li>
+<li>diff 检查容器里文件结构的更改</li>
+</ul>
+<h2 id="镜像仓库">镜像仓库</h2>
+<ul>
+<li>login</li>
+<li>pull</li>
+<li>push</li>
+<li>search</li>
+</ul>
+<h2 id="本地镜像管理">本地镜像管理</h2>
+<ul>
+<li>images</li>
+<li>rmi</li>
+<li>tag</li>
+<li>build</li>
+<li>history</li>
+<li>save</li>
+<li>load</li>
+<li>import</li>
+</ul>
+<h2 id="infoversion">info|version</h2>
+<ul>
+<li>info</li>
+<li>version</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Mysql 常用命令]]></title>
         <id>https://meetabug.github.io/post/mysql-chang-yong-ming-ling/</id>
@@ -1094,88 +1153,6 @@ composer install
 </blockquote>
 <pre><code>composer init 
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Vagrant 常用命令]]></title>
-        <id>https://meetabug.github.io/post/vagrant-chang-yong-ming-ling/</id>
-        <link href="https://meetabug.github.io/post/vagrant-chang-yong-ming-ling/">
-        </link>
-        <updated>2020-07-30T13:15:49.000Z</updated>
-        <content type="html"><![CDATA[<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vagrant init</td>
-<td>初始化</td>
-</tr>
-<tr>
-<td>vagrant up</td>
-<td>启动虚拟机</td>
-</tr>
-<tr>
-<td>vagrant halt</td>
-<td>关闭虚拟机</td>
-</tr>
-<tr>
-<td>vagrant reload {--provision}</td>
-<td>重启虚拟机</td>
-</tr>
-<tr>
-<td>vagrant ssh</td>
-<td>SSH 至虚拟机</td>
-</tr>
-<tr>
-<td>vagrant status</td>
-<td>查看虚拟机运行状态</td>
-</tr>
-<tr>
-<td>vagrant destroy</td>
-<td>销毁当前虚拟机</td>
-</tr>
-<tr>
-<td>vagrant suspend</td>
-<td>挂起虚拟机</td>
-</tr>
-<tr>
-<td>vagrant resume</td>
-<td>恢复被挂起的虚拟机</td>
-</tr>
-<tr>
-<td>vagrant box list</td>
-<td>列出所有box列表</td>
-</tr>
-<tr>
-<td>vagrant box remove {base name}</td>
-<td>删除box</td>
-</tr>
-<tr>
-<td>vagrant package</td>
-<td>把当前运行的虚拟机环境进行打包，可用于分发开发环境</td>
-</tr>
-<tr>
-<td>vagrant plugin</td>
-<td>安装/卸载插件</td>
-</tr>
-<tr>
-<td>vagrant provision</td>
-<td>设置基本的环境，进一步设置可以使用Chef/Puppet进行搭建</td>
-</tr>
-<tr>
-<td>vagrant ssh-config</td>
-<td>输出SSH 连接的一些信息</td>
-</tr>
-<tr>
-<td>vagrant vsersion</td>
-<td>获取Vagrant的版本</td>
-</tr>
-</tbody>
-</table>
 ]]></content>
     </entry>
 </feed>
