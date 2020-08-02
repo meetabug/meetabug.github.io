@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Vagrant 常用命令 | Meetabug</title>
+<title>Mysql 面试 | Meetabug</title>
 
 <link rel="shortcut icon" href="https://meetabug.github.io/favicon.ico?v=1596373724285">
 
@@ -83,93 +83,165 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Vagrant 常用命令
+                    Mysql 面试
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-07-30 ·
+                        · 2020-08-02 ·
                     </time>
                     
-                        <a href="https://meetabug.github.io/tag/eO9s8LNEM/" class="post-tags">
-                            # vagrant
+                        <a href="https://meetabug.github.io/tag/tosVnU20F/" class="post-tags">
+                            # Mysql
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vagrant init</td>
-<td>初始化</td>
-</tr>
-<tr>
-<td>vagrant up</td>
-<td>启动虚拟机</td>
-</tr>
-<tr>
-<td>vagrant halt</td>
-<td>关闭虚拟机</td>
-</tr>
-<tr>
-<td>vagrant reload {--provision}</td>
-<td>重启虚拟机</td>
-</tr>
-<tr>
-<td>vagrant ssh</td>
-<td>SSH 至虚拟机</td>
-</tr>
-<tr>
-<td>vagrant status</td>
-<td>查看虚拟机运行状态</td>
-</tr>
-<tr>
-<td>vagrant destroy</td>
-<td>销毁当前虚拟机</td>
-</tr>
-<tr>
-<td>vagrant suspend</td>
-<td>挂起虚拟机</td>
-</tr>
-<tr>
-<td>vagrant resume</td>
-<td>恢复被挂起的虚拟机</td>
-</tr>
-<tr>
-<td>vagrant box list</td>
-<td>列出所有box列表</td>
-</tr>
-<tr>
-<td>vagrant box remove {base name}</td>
-<td>删除box</td>
-</tr>
-<tr>
-<td>vagrant package</td>
-<td>把当前运行的虚拟机环境进行打包，可用于分发开发环境</td>
-</tr>
-<tr>
-<td>vagrant plugin</td>
-<td>安装/卸载插件</td>
-</tr>
-<tr>
-<td>vagrant provision</td>
-<td>设置基本的环境，进一步设置可以使用Chef/Puppet进行搭建</td>
-</tr>
-<tr>
-<td>vagrant ssh-config</td>
-<td>输出SSH 连接的一些信息</td>
-</tr>
-<tr>
-<td>vagrant vsersion</td>
-<td>获取Vagrant的版本</td>
-</tr>
-</tbody>
-</table>
+                    <h2 id="索引相关">索引相关</h2>
+<ol>
+<li>
+<p>什么是索引?<br>
+索引是一种数据结构,可以帮助我们快速的进行数据的查找.</p>
+</li>
+<li>
+<p>在建立索引的时候,都有哪些需要考虑的因素呢?<br>
+建立索引的时候一般要考虑到字段的使用频率,经常作为条件进行查询的字段比较适合.如果需要建立联合索引的话,还需要考虑联合索引中的顺序.此外也要考虑其他方面,比如防止过多的所有对表造成太大的压力.这些都和实际的表结构以及查询方式有关.</p>
+</li>
+<li>
+<p>常见索引类型有那些？<br>
+主键索引、唯一索引、复合索引、全文索引</p>
+</li>
+<li>
+<p>Mysql 建立索引的原则？<br>
+最左前缀原理<br>
+尽量的去扩展索引，而不是重复的新建新索引</p>
+</li>
+</ol>
+<h2 id="事务相关">事务相关</h2>
+<ol>
+<li>
+<p>什么是事务?<br>
+事务是一个序列操作，其中的操作要么都执行，要么都不执行，它是一个不可分割的工作单位，ACID 四大特性是事务的基础。</p>
+</li>
+<li>
+<p>ACID是什么?可以详细说一下吗?<br>
+A=Atomicity<br>
+原子性,就是上面说的,要么全部成功,要么全部失败.不可能只执行一部分操作.<br>
+C=Consistency<br>
+一致性,系统(数据库)总是从一个一致性的状态转移到另一个一致性的状态,不会存在中间状态.<br>
+I=Isolation<br>
+隔离性: 通常来说:一个事务在完全提交之前,对其他事务是不可见的.注意前面的通常来说加了红色,意味着有例外情况.<br>
+D=Durability<br>
+持久性,一旦事务提交,那么就永远是这样子了,哪怕系统崩溃也不会影响到这个事务的结果.</p>
+</li>
+<li>
+<p>怎么解决这些问题呢?MySQL的事务隔离级别了解吗?<br>
+MySQL的四种隔离级别如下:</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>未提交读(READ UNCOMMITTED)<br>
+这就是上面所说的例外情况了,这个隔离级别下,其他事务可以看到本事务没有提交的部分修改.因此会造成脏读的问题(读取到了其他事务未提交的部分,而之后该事务进行了回滚).<br>
+这个级别的性能没有足够大的优势,但是又有很多的问题,因此很少使用.</p>
+</li>
+<li>
+<p>已提交读(READ COMMITTED)<br>
+其他事务只能读取到本事务已经提交的部分.这个隔离级别有 不可重复读的问题,在同一个事务内的两次读取,拿到的结果竟然不一样,因为另外一个事务对数据进行了修改.</p>
+</li>
+<li>
+<p>REPEATABLE READ(可重复读)<br>
+可重复读隔离级别解决了上面不可重复读的问题(看名字也知道),但是仍然有一个新问题,就是 幻读,当你读取id&gt; 10 的数据行时,对涉及到的所有行加上了读锁,此时例外一个事务新插入了一条id=11的数据,因为是新插入的,所以不会触发上面的锁的排斥,那么进行本事务进行下一次的查询时会发现有一条id=11的数据,而上次的查询操作并没有获取到,再进行插入就会有主键冲突的问题.</p>
+</li>
+<li>
+<p>SERIALIZABLE(可串行化)<br>
+这是最高的隔离级别,可以解决上面提到的所有问题,因为他强制将所以的操作串行执行,这会导致并发性能极速下降,因此也不是很常用.</p>
+</li>
+</ul>
+<ol start="5">
+<li>
+<p>Innodb使用的是哪种隔离级别呢?<br>
+InnoDB默认使用的是可重复读隔离级别.</p>
+</li>
+<li>
+<p>对MySQL的锁了解吗?<br>
+当数据库有并发事务的时候,可能会产生数据的不一致,这时候需要一些机制来保证访问的次序,锁机制就是这样的一个机制.<br>
+就像酒店的房间,如果大家随意进出,就会出现多人抢夺同一个房间的情况,而在房间上装上锁,申请到钥匙的人才可以入住并且将房间锁起来,其他人只有等他使用完毕才可以再次使用.</p>
+</li>
+<li>
+<p>MySQL都有哪些锁呢?像上面那样子进行锁定岂不是有点阻碍并发效率了?<br>
+从锁的类别上来讲,有共享锁和排他锁.<br>
+共享锁: 又叫做读锁. 当用户要进行数据的读取时,对数据加上共享锁.共享锁可以同时加上多个.<br>
+排他锁: 又叫做写锁. 当用户要进行数据的写入时,对数据加上排他锁.排他锁只可以加一个,他和其他的排他锁,共享锁都相斥.<br>
+用上面的例子来说就是用户的行为有两种,一种是来看房,多个用户一起看房是可以接受的. 一种是真正的入住一晚,在这期间,无论是想入住的还是想看房的都不可以.<br>
+锁的粒度取决于具体的存储引擎,InnoDB实现了行级锁,页级锁,表级锁.<br>
+他们的加锁开销从大大小,并发能力也是从大到小.</p>
+</li>
+</ol>
+<h2 id="表结构设计">表结构设计</h2>
+<ol>
+<li>
+<p>为什么要尽量设定一个主键?<br>
+主键是数据库确保数据行在整张表唯一性的保障,即使业务上本张表没有主键,也建议添加一个自增长的ID列作为主键.设定了主键之后,在后续的删改查的时候可能更加快速以及确保操作数据范围安全.</p>
+</li>
+<li>
+<p>主键使用自增ID还是UUID?<br>
+推荐使用自增ID,不要使用UUID.<br>
+因为在InnoDB存储引擎中,主键索引是作为聚簇索引存在的,也就是说,主键索引的B+树叶子节点上存储了主键索引以及全部的数据(按照顺序),如果主键索引是自增ID,那么只需要不断向后排列即可,如果是UUID,由于到来的ID与原来的大小不确定,会造成非常多的数据插入,数据移动,然后导致产生很多的内存碎片,进而造成插入性能的下降.<br>
+总之,在数据量大一些的情况下,用自增主键性能会好一些.</p>
+</li>
+<li>
+<p>字段为什么要求定义为not null?<br>
+null值会占用更多的字节,且会在程序中造成很多与预期不符的情况.</p>
+</li>
+<li>
+<p>如果要存储用户的密码散列,应该使用什么字段进行存储?<br>
+密码散列,盐,用户身份证号等固定长度的字符串应该使用char而不是varchar来存储,这样可以节省空间且提高检索效率.</p>
+</li>
+</ol>
+<h2 id="存储引擎相关">存储引擎相关</h2>
+<ol>
+<li>
+<p>MySQL支持哪些存储引擎?<br>
+MySQL支持多种存储引擎,比如InnoDB,MyISAM,Memory,Archive等等.在大多数的情况下,直接选择使用InnoDB引擎都是最合适的,InnoDB也是MySQL的默认存储引擎.</p>
+</li>
+<li>
+<p>MyISAM 和 InnoDB 的区别<br>
+MyISAM 查询效率更高，但是不支持事物<br>
+InnoDB 插入、更新较高，支持事物处理<br>
+MyISAM 支持表锁， InnoDb 支持行锁<br>
+MyISAM 是默认引擎，InnoDB 需要指定,MySQL 5.5 起 InnoDB是默认的数据库引擎<br>
+InnoDB 不支持 全文索引 类型的索引</p>
+</li>
+</ol>
+<h2 id="零散问题">零散问题</h2>
+<ol>
+<li>
+<p>MySQL中的varchar和char有什么区别.<br>
+char是一个定长字段,假如申请了char(10)的空间,那么无论实际存储多少内容.该字段都占用10个字符,而varchar是变长的,也就是说申请的只是最大长度,占用的空间为实际字符长度+1,最后一个字符存储使用了多长的空间.<br>
+在检索效率上来讲,char &gt; varchar,因此在使用中,如果确定某个字段的值的长度,可以使用char,否则应该尽量使用varchar.例如存储用户MD5加密后的密码,则应该使用char.</p>
+</li>
+<li>
+<p>varchar(10)和int(10)代表什么含义?<br>
+varchar的10代表了申请的空间长度,也是可以存储的数据的最大长度,而int的10只是代表了展示的长度,不足10位以0填充.也就是说,int(1)和int(10)所能存储的数字大小以及占用的空间都是相同的,只是在展示时按照长度展示.</p>
+</li>
+<li>
+<p>MySQL的binlog有有几种录入格式?分别有什么区别?<br>
+有三种格式,statement,row和mixed.</p>
+</li>
+</ol>
+<ul>
+<li>statement模式下,记录单元为语句.即每一个sql造成的影响会记录.由于sql的执行是有上下文的,因此在保存的时候需要保存相关的信息,同时还有一些使用了函数之类的语句无法被记录复制.</li>
+<li>row级别下,记录单元为每一行的改动,基本是可以全部记下来但是由于很多操作,会导致大量行的改动(比如alter table),因此这种模式的文件保存的信息太多,日志量太大</li>
+<li>mixed. 一种折中的方案,普通操作使用statement记录,当无法使用statement的时候使用row.<br>
+此外,新版的MySQL中对row级别也做了一些优化,当表结构发生变化的时候,会记录语句而不是逐行记录</li>
+</ul>
+<h2 id="sql-语句的优化方式">SQL 语句的优化方式？</h2>
+<ol>
+<li>避免使用 Like 模糊查询</li>
+<li>只列出需要查询的字段，而不是所有</li>
+<li>不在 MySQL 中进行运算，减轻 MySQL 的压力</li>
+<li>经常查询的字段，创建合适的索引，提高查询效率</li>
+</ol>
 
                 </div>
             </article>
@@ -178,8 +250,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://meetabug.github.io/post/hello-gridea/" class="post-title gt-a-link">
-                    Hello Gridea
+                <a href="https://meetabug.github.io/post/gitflow-gong-zuo-liu-cheng/" class="post-title gt-a-link">
+                    Gitflow 工作流程
                 </a>
             </div>
         
